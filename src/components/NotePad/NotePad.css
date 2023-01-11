@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.notepad {
+    display: block;
+    position: absolute;
+    width: 800px;
+    height: 90vh;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    background-color: #5b4a8b;
+    padding: 16px;
+    border: 4px solid #908c9b;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.notepad .note-container {
+    position: relative;
+    width: calc(100% - 24px);
+    height: calc(78% - 24px);
+    padding: 12px;
+    overflow: scroll;
+    background-color: #353042;
+    border-radius: 12px 12px 0 0;
+}
+
+.notepad .input-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: calc(100% - 20px);
+    height: calc(22% - 20px);
+    background-color: #44386b;
+    padding: 10px;
+    border-radius: 0 0 12px 12px;
+}
+
+.notepad .input-container .text-boxes {
+    position: relative;
+    width: calc(90% - 8px);
+}
+
+.notepad .input-container .text-boxes .title-row {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    margin-bottom: 0.2em;
+}
+
+.notepad .input-container .text-boxes .title-row input:first-child {
+    position: relative;
+    width: calc(10% - 4px);
+    height: calc(1.6em + 8px);
+    margin-right: 4px;
+    font-size: 1.5em;
+    border: 4px solid #aaa;
+    border-radius: 8px;
+    color: white;
+    background-color: #5a5664;
+    cursor: pointer;
+}
+
+.notepad .input-container .text-boxes .title-row input:last-child {
+    position: relative;
+    width: 90%;
+    font-size: 1.5em;
+    padding: 0.2em;
+    border: 4px solid #aaa;
+    border-radius: 8px;
+    color: white;
+    background-color: #5a5664;
+}
+
+
+
+.notepad .input-container .text-boxes textarea {
+    position: relative;
+    top: 0;
+    width: calc(100% - 1em - 4px);
+    height: calc(100% - 4.5em - 16px);
+    padding: 0.5em;
+    background-color: #5a5664;
+    color: white;
+    border: 4px solid #aaa;
+    border-radius: 8px;
+    transition: 100ms cubic-bezier(.55,.01,.42,.98);
+}
+
+.notepad .input-container button {
+    position: relative;
+    width: 10%;
+    background-color: #21d10a;
+    color: rgb(238, 238, 238);
+    border: 4px solid rgb(194, 194, 194);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 2.5em;
+    padding-bottom: 4px;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.35);
+    transition: 70ms cubic-bezier(.73,0,.31,1.01);
+}
+
+.notepad .input-container button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0.35);
+    transition: 125ms cubic-bezier(.73,0,.31,1.01);
+}
+
+.notepad .input-container button:hover {
+    margin-top: -8px;
+    margin-bottom: 8px;
+    border: 4px solid rgb(170, 170, 170);
+    border-color: rgb(194, 194, 194) rgb(170, 170, 170) rgb(143, 143, 143) rgb(170, 170, 170);
+    background-color: #1db409;
+    color: rgb(206, 206, 206);
+    box-shadow: 0 8px 3px rgba(0, 0, 0, 0.35);
+}
+
+.notepad .input-container button:hover span {
+    transform: translate(-50%, calc(-50% - 6px));
+    text-shadow: 0 6px 0 rgba(0, 0, 0, 0.35);
+}
+
+
+.notepad .input-container button:active {
+    border: 4px solid rgb(150, 150, 150);
+    border-color: rgb(170, 170, 170) rgb(145, 145, 145) rgb(121, 121, 121) rgb(145, 145, 145);
+    background-color: #1a9c09;
+    color: rgb(167, 167, 167);
+    box-shadow: 0 4px 3px rgba(0, 0, 0, 0.35);
+    margin-top: -4px;
+    margin-bottom: 4px;
+}
+
+.notepad .input-container button:active span {
+    transform: translate(-50%, calc(-50% - 3px));
+    text-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+}
