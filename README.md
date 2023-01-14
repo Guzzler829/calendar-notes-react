@@ -5,7 +5,7 @@
 ## To do:
 
 * Finish Calendar component
- - Add date cells which can be clicked to open and marked visually
- - Add buttons for cycling through years/months, as well as a way to enter the year/month manually as to skip to it.
+    - Add date cells which can be clicked to open and marked visually
+    - Add buttons for cycling through years/months, as well as a way to enter the year/month manually as to skip to it.
 * Finish Note component
- - Add image array
+    - Add image array
