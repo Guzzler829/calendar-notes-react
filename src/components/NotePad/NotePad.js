@@ -1,16 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './NotePad.css';
 import Note from '../Note/Note';
 
 export default function NotePad(props) {
 
-    const [notes, setNotes] = useState(props.notes);
-    const [color, setColor] = useState('#214eff');
-    const [timeFormatToggle, setTimeFormatToggle] = useState(false);
+    const defaultColor = '#214eff';
 
-    const titleInput = useRef(null);
-    const colorInput = useRef(null);
-    const textInput = useRef(null);
+    const [notes, setNotes] = useState(props.notes);
+    const [color, setColor] = useState(defaultColor);
+    const [title, setTitle] = useState(props.title);
+    const [text, setText] = useState(props.text);
+    const [timeFormatToggle, setTimeFormatToggle] = useState(false);
 
     useEffect( () => {
         
@@ -18,6 +18,9 @@ export default function NotePad(props) {
 
     const addNote = (title, text, noteColor, lastEdit) => {
         setNotes(notes => [...notes, <Note title={title} text={text} timeString={lastEdit} color={noteColor}/>]);
+        //setColor(defaultColor);
+        setTitle('');
+        setText('');
     };
 
     function generateTimeString(_24hour) {
@@ -58,12 +61,12 @@ export default function NotePad(props) {
             <div className='input-container'>
                 <div className='text-boxes'>
                     <div className='row title-row'>
-                        <input title='Edit color' ref={colorInput} type={'color'} value={color} onChange={ (e) => setColor(e.target.value)}></input>
-                        <input ref={titleInput} type={'text'} placeholder={'Title...'}></input>
+                        <input title='Edit color' type={'color'} value={color} onChange={ (e) => setColor(e.target.value)}></input>
+                        <input value={title} onChange={ e => setTitle(e.target.value)} type={'text'} placeholder={'Title...'}></input>
                     </div>
-                    <textarea ref={textInput} placeholder={'New note...'}></textarea>
+                    <textarea value={text} onChange={ e => setText(e.target.value)} placeholder={'New note...'}></textarea>
                 </div>
-                <button onClick={() => addNote(titleInput.current.value, textInput.current.value, colorInput.current.value, generateTimeString(timeFormatToggle))}><span>+</span></button>
+                <button onClick={() => addNote(title, text, color, generateTimeString(timeFormatToggle))}>fix the ugly and moronic css for the scaling of these inputs<span>+</span></button>
             </div>
         </div>
     );
