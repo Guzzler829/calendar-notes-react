@@ -49,10 +49,32 @@ export default function Calendar(props) {
         document.title = cal.months()[month] + ' ' + day + ', ' + year;
     }
 
+    function changeYear(increment) {
+        setYear(year + increment);
+    }
+
+    function changeMonth(increment) {
+        setMonth(month + increment);
+        if(month < 0) {
+            month = 11
+        } else if(month > 11) {
+            month = 0;
+        }
+    }
+
     return (
         <div className='calendar'>
-            <h1>{year}</h1>
-            <h2>{cal.months()[month]}</h2>
+            <div className='year-container'>
+                <button className='arrow arrow-left' onClick={() => changeYear(-1)}></button>
+                <h1>{year}</h1>
+                <button className='arrow arrow-right' onClick={() => changeYear(1)}></button>
+            </div>
+            
+            <div className='month-container'>
+                <button className='arrow arrow-left' onClick={() => changeMonth(-1)}></button>
+                <h2>{cal.months()[month]}</h2>
+                <button className='arrow arrow-right' onClick={() => changeMonth(1)}></button>
+            </div>
             <ul className='week-day-names'>
                 <li>Sun</li>
                 <li>Mon</li>
