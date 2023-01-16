@@ -26,16 +26,23 @@
     background-color: transparent;
     margin-left: 12px;
     margin-right: 12px;
-    margin-top: 4px;;
+    margin-top: 4px;
+    cursor: pointer;
 }
 
 .arrow-left {
-    
     border-top: 1em solid transparent;
     border-bottom: 1em solid transparent; 
     border-right: 1em solid #fff; 
     border-left: none;
-    
+}
+
+.arrow-left:hover {
+    border-right: 1em solid #ccc; 
+}
+
+.arrow-left:active {
+    border-right: 1em solid #aaa; 
 }
 
 .arrow-right {
@@ -43,6 +50,14 @@
     border-bottom: 1em solid transparent;
     border-left: 1em solid #fff;
     border-right: none;
+}
+
+.arrow-right:hover {
+    border-left: 1em solid #ccc;
+}
+
+.arrow-right:active {
+    border-left: 1em solid #aaa;
 }
 
 .month-container {

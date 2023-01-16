@@ -34,16 +34,19 @@ export default function Calendar(props) {
     const [dateCells, setDateCells] = useState([]);
 
     useEffect( () => {
+        updateCalendarDates();
+        console.log(dateCells)
+    }, []);
+
+    function updateCalendarDates() {
         let calendarArray = [];
         for(let i = 0; i < 5; i++) {
             for(let j = 0; j < 7; j++) {
-                calendarArray.push(cal.of(initialYear, initialMonth).calendar[i][j]);
+                calendarArray.push(cal.of(year, month).calendar[i][j]);
             }
         }
-        //console.log(calendarArray)
         setDateCells(calendarArray.map( (day, i) => day ? <div  key={i} className='date-cell' onClick={() => changeDate(day)}>{day}</div> : <div className='date-cell date-cell-disabled'></div>));
-        console.log(dateCells)
-    }, []);
+    }
 
     function changeDate(day) {
         document.title = cal.months()[month] + ' ' + day + ', ' + year;
@@ -51,6 +54,7 @@ export default function Calendar(props) {
 
     function changeYear(increment) {
         setYear(year + increment);
+        updateCalendarDates()
     }
 
     function changeMonth(increment) {
@@ -60,6 +64,7 @@ export default function Calendar(props) {
         } else if(month > 11) {
             month = 0;
         }
+        updateCalendarDates();
     }
 
     return (
