@@ -45,7 +45,7 @@ export default function Calendar(props) {
         }
         //console.log(calendarArray)
         setLinearCalendar(calendarArray);
-        setDateCells(linearCalendar.map( (day, i) => day ? <DateCell date={day} key={i} disabled={false} onClick={ () => changeDate(day)} /> : <DateCell disabled={true} key={i} />));
+        setDateCells(linearCalendar.map( (day, i) => day ? <DateCell date={day} key={i} disabled={false} onClick={() => changeDate(day)} /> : <DateCell disabled={true} key={i} />));
         console.log(dateCells)
     }, []);
 
