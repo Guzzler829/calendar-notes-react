@@ -45,7 +45,7 @@ export default function Calendar(props) {
                 calendarArray.push(cal.of(year, month).calendar[i][j]);
             }
         }
-        setDateCells(calendarArray.map( (day, i) => day ? <div  key={i} className='date-cell' onClick={() => changeDate(day)}>{day}</div> : <div className='date-cell date-cell-disabled'></div>));
+        setDateCells(calendarArray.map( (day, i) => day ? <div  key={i} className='date-cell' onClick={() => changeDate(day)}>{day}</div> : <div key={i} className='date-cell date-cell-disabled'></div>));
     }
 
     function changeDate(day) {
@@ -60,9 +60,9 @@ export default function Calendar(props) {
     function changeMonth(increment) {
         setMonth(month + increment);
         if(month < 0) {
-            month = 11
+            setMonth(11);
         } else if(month > 11) {
-            month = 0;
+            setMonth(0);
         }
         updateCalendarDates();
     }
