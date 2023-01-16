@@ -10,21 +10,28 @@
     background-color: #222;
 }
 
+.calendar h1, h2 {
+    text-align: center;
+}
+
 .week-day-names {
-    display: flex;
+    display: grid;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 13.29% 13.29% 13.29% 13.29% 13.29% 13.29% 13.29%;
+    gap: 1%;
     list-style: none;
-    font-size: 0.8em;
-    margin: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .week-day-names li {
     position: relative;
-    width: calc(12% - 40px);
-    padding: 12px;
-    margin-right: 10px;
-    margin-left: 10px;
     background-color: #666;
-    border-radius: 4px;
+    border-radius: 10px;
+    padding: 0.3em;
 }
 
 .week-day-names li:nth-child(1) {
@@ -50,7 +57,55 @@
 }
 
 .date-cells-container {
-    display: flex;
-    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 13.29% 13.29% 13.29% 13.29% 13.29% 13.29% 13.29%;
+    grid-template-rows: 13.29% 13.29% 13.29% 13.29% 13.29%;
+    gap: 1%;
+}
+
+/* --------------------- */
+
+.date-cell {
+    position: relative;
+    width: calc(12% - 40px);
+    background-color: #444;
+    border: 2px solid #777;
+    border-radius: 6px;
+    padding: 2em;
     margin: 10px;
+    text-align: right;
+    cursor: pointer;
+    transition: 120ms ease-in-out; 
+}
+
+.date-cell:hover {
+    background-color: #555;
+    border: 2px solid #888;
+    transform: translate(0, -5px);
+}
+
+.date-cell:active {
+    background-color: #484848;
+    border: 2px solid #787878;
+    transform: translate(0, -2px);
+}
+
+.date-cell-disabled {
+    background-color: #2a2a2a;
+    border: 2px solid #444;
+    cursor: default;
+}
+
+.date-cell-disabled:hover {
+    background-color: #2a2a2a;
+    border: 2px solid #444;
+    transform: translate(0, 0);
+}
+
+.date-cell-disabled:active {
+    background-color: #2a2a2a;
+    border: 2px solid #444;
+    transform: translate(0, 0);
 }

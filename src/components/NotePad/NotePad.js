@@ -47,6 +47,7 @@ export default function NotePad(props) {
 
     return (
         <div className='notepad'>
+            <div className='note-date'></div>
             <div className='note-container'>
                 {notes.map( (note, i) => (
                     <Note 

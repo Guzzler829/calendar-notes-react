@@ -20,8 +20,6 @@ import './Calendar.css';
 
 import calendar from 'calendar-js';
 
-import DateCell from './DateCell/DateCell';
-
 export default function Calendar(props) {
 
     let d = new Date();
@@ -33,7 +31,6 @@ export default function Calendar(props) {
     const [year, setYear] = useState(initialYear);
     const [month, setMonth] = useState(initialMonth);
 
-    const [linearCalendar, setLinearCalendar] = useState([]);
     const [dateCells, setDateCells] = useState([]);
 
     useEffect( () => {
@@ -44,13 +41,12 @@ export default function Calendar(props) {
             }
         }
         //console.log(calendarArray)
-        setLinearCalendar(calendarArray);
-        setDateCells(linearCalendar.map( (day, i) => day ? <DateCell date={day} key={i} disabled={false} onClick={() => changeDate(day)} /> : <DateCell disabled={true} key={i} />));
+        setDateCells(calendarArray.map( (day, i) => day ? <div  key={i} className='date-cell' onClick={() => changeDate(day)}>{day}</div> : <div className='date-cell date-cell-disabled'></div>));
         console.log(dateCells)
     }, []);
 
     function changeDate(day) {
-        console.log(day)
+        document.title = cal.months()[month] + ' ' + day + ', ' + year;
     }
 
     return (
