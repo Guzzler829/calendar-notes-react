@@ -1,0 +1,20 @@
+.date-cell {
+    position: relative;
+    width: calc(12% - 40px);
+    background-color: #444;
+    border: 2px solid #777;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.date-cell:hover {
+    background-color: #555;
+    border: 2px solid #888;
+}
+
+.date-cell:active {
+    background-color: #484848;
+    border: 2px solid #787878;
+}

@@ -9,3 +9,26 @@
     border-radius: 16px;
     background-color: #222;
 }
+
+.week-day-names {
+    display: flex;
+    list-style: none;
+    font-size: 0.8em;
+    margin: 10px;
+}
+
+.week-day-names li {
+    position: relative;
+    width: calc(12% - 40px);
+    padding: 12px;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #666;
+    border-radius: 4px;
+}
+
+.date-cells-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
