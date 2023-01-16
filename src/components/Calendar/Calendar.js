@@ -5,13 +5,13 @@
 
 Calendar Component
     Subcomponents
-        *Top component is year; click to choose/cycle with arrows
-        *Second component is month with arrows to cycle as so:   <- January ->
+        * Top component is year; click to choose/cycle with arrows
+        * Second component is month with arrows to cycle as so:   <- January ->
     Functions
-        *change layout of calendar and notepad (vertical, horizontal) with css and js function that adds/removes classes
-        *group dates in series to create a new entity that can have its own notes (useful for trips/several day events)
-        *change date-cells' background colors - default change color when notes added to a date
-        *mark dates with colored markers (perhaps a circle in the corner)
+        * change layout of calendar and notepad (vertical, horizontal) with css and js function that adds/removes classes
+        * group dates in series to create a new entity that can have its own notes (useful for trips/several day events)
+        * change date-cells' background colors - default change color when notes added to a date
+        * mark dates with colored markers (perhaps a circle in the corner)
 
 */
 import React from 'react';
@@ -45,9 +45,13 @@ export default function Calendar(props) {
         }
         //console.log(calendarArray)
         setLinearCalendar(calendarArray);
-        setDateCells(linearCalendar.map( (day) => day ? <DateCell date={day} key={day} /> : <DateCell date={' '} key={day} />));
+        setDateCells(linearCalendar.map( (day, i) => day ? <DateCell date={day} key={i} disabled={false} onClick={ () => changeDate(day)} /> : <DateCell disabled={true} key={i} />));
         console.log(dateCells)
     }, []);
+
+    function changeDate(day) {
+        console.log(day)
+    }
 
     return (
         <div className='calendar'>
