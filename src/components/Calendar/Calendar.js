@@ -35,11 +35,11 @@ export default function Calendar(props) {
 
     useEffect( () => {
         updateCalendarDates();
-    }, []);
+    }, [year, month]);
 
     function updateCalendarDates() {
         let calendarArray = [];
-        for(let i = 0; i < 5; i++) {
+        for(let i = 0; i < 6; i++) {
             for(let j = 0; j < 7; j++) {
                 calendarArray.push(cal.of(year, month).calendar[i][j]);
             }
@@ -53,7 +53,7 @@ export default function Calendar(props) {
 
     function changeYear(increment) {
         setYear(year + increment);
-        updateCalendarDates()
+        console.log(year)
     }
 
     function changeMonth(increment) {
@@ -65,7 +65,6 @@ export default function Calendar(props) {
             return;
         }
         setMonth(month + increment);
-        updateCalendarDates();
     }
 
     return (
@@ -78,7 +77,7 @@ export default function Calendar(props) {
             
             <div className='month-container'>
                 <button className='arrow arrow-left' onClick={() => changeMonth(-1)}></button>
-                <h2>{cal.months()[month]}</h2>
+                <h2>{cal.months()[month] + ' : ' + month}</h2>
                 <button className='arrow arrow-right' onClick={() => changeMonth(1)}></button>
             </div>
             <ul className='week-day-names'>
