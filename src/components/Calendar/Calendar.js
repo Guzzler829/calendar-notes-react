@@ -35,7 +35,6 @@ export default function Calendar(props) {
 
     useEffect( () => {
         updateCalendarDates();
-        console.log(dateCells)
     }, []);
 
     function updateCalendarDates() {
@@ -58,12 +57,14 @@ export default function Calendar(props) {
     }
 
     function changeMonth(increment) {
-        setMonth(month + increment);
-        if(month < 0) {
+        if(month + increment < 0) {
             setMonth(11);
-        } else if(month > 11) {
+            return;
+        } else if (month + increment > 11) {
             setMonth(0);
+            return;
         }
+        setMonth(month + increment);
         updateCalendarDates();
     }
 
