@@ -13,7 +13,7 @@ Creative uses for this project beyond keeping dates straight for the near future
 */
 
 import './App.css';
-import Note from './components/Note/Note';
+// import Note from './components/Note/Note';
 import NotePad from './components/NotePad/NotePad';
 import Calendar from './components/Calendar/Calendar';
 

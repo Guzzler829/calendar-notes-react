@@ -14,7 +14,7 @@ Calendar Component
         * mark dates with colored markers (perhaps a circle in the corner)
 
 */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState, useEffect } from 'react';
 import './Calendar.css';
 
@@ -26,30 +26,41 @@ export default function Calendar(props) {
     let initialYear = d.getFullYear();
     let initialMonth = d.getMonth();
 
-    let cal = calendar();
+    const [cal, setCal] = useState(calendar());
+    //console.log(cal);
 
     const [year, setYear] = useState(initialYear);
     const [month, setMonth] = useState(initialMonth);
 
     const [dateCells, setDateCells] = useState([]);
 
-    useEffect( () => {
-        updateCalendarDates();
-    }, [year, month]);
+    const changeDate = useCallback((day) => {
+        document.title = cal.months()[month] + ' ' + day + ', ' + year;
+    }, [cal, year, month]);
 
-    function updateCalendarDates() {
+    const updateCalendarDates = useCallback(() => {
         let calendarArray = [];
-        for(let i = 0; i < 6; i++) {
-            for(let j = 0; j < 7; j++) {
-                calendarArray.push(cal.of(year, month).calendar[i][j]);
+        const selectedMonthCalendar = cal.of(year, month)
+        // console.log({ selectedMonthCalendar })
+        for(let i = 0; i < selectedMonthCalendar.calendar.length; i++) {
+            for(let j = 0; j < selectedMonthCalendar.calendar[0].length; j++) {
+                calendarArray.push(selectedMonthCalendar.calendar[i][j]);
             }
         }
         setDateCells(calendarArray.map( (day, i) => day ? <div  key={i} className='date-cell' onClick={() => changeDate(day)}>{day}</div> : <div key={i} className='date-cell date-cell-disabled'></div>));
-    }
+        return dateCells;
+    }, [changeDate, year, month, dateCells, cal]);
 
-    function changeDate(day) {
-        document.title = cal.months()[month] + ' ' + day + ', ' + year;
-    }
+    // useEffect(updateCalendarDates, [updateCalendarDates, year, month]);
+    //WHY DOESNT IT WORK WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY WHY 
+
+    const [mount, setMount] = useState(false)
+    useEffect(() => {
+        if(!mount) {
+            setMount(true);
+            updateCalendarDates();
+        }
+    },[updateCalendarDates, mount]);
 
     function changeYear(increment) {
         setYear(year + increment);
@@ -57,14 +68,19 @@ export default function Calendar(props) {
     }
 
     function changeMonth(increment) {
-        if(month + increment < 0) {
+        setMonth(month + increment);
+
+        if(month === -1) {
             setMonth(11);
+            console.log(month);
             return;
-        } else if (month + increment > 11) {
+        } else if (month === 12) {
             setMonth(0);
+            console.log(month);
             return;
         }
-        setMonth(month + increment);
+
+        console.log(month);
     }
 
     return (
@@ -77,7 +93,7 @@ export default function Calendar(props) {
             
             <div className='month-container'>
                 <button className='arrow arrow-left' onClick={() => changeMonth(-1)}></button>
-                <h2>{cal.months()[month] + ' : ' + month}</h2>
+                <h2>{cal.months()[month] + ' : ' + (month)}</h2>
                 <button className='arrow arrow-right' onClick={() => changeMonth(1)}></button>
             </div>
             <ul className='week-day-names'>

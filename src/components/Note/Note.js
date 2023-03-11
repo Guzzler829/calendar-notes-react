@@ -3,7 +3,7 @@
 To do:
 
 - add image array and allow user to add one or list of images that appear toward top
-
+- add time of day for notes in separate input field
 
 
 */
